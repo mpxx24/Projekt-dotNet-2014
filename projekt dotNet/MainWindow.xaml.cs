@@ -50,5 +50,16 @@ namespace projekt_dotNet
         {
             VideoWindow.Stop();
         }
+
+        private void DBButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Video vid = new Video()
+            //{
+            //    Id = 1,
+            //    FileName = TextBoxFileDirectory.Text,
+            //    AddedTime = DateTime.Now,
+            //    Lenght = "",
+            //};
+        }
     }
 }

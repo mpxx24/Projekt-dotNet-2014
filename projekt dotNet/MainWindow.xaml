@@ -9,6 +9,7 @@
         <Button x:Name="Browse" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="413,239,0,0" Click="Browse_Click"/>
         <Button x:Name="Pause" Content="Pause" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="142,264,0,0" Click="Pause_Click"/>
         <Button x:Name="Stop" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="251,264,0,0" Click="Stop_Click"/>
+        <Button x:Name="DBButton" Content="Add to DB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="423,289,0,0" Click="DBButton_Click"/>
 
     </Grid>
 </Window>
