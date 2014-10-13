@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,11 @@ namespace projekt_dotNet
             fdialog.InitialDirectory = @"C:\Users\Mariusz\Desktop\dotNet";
             fdialog.ShowDialog();
             TextBoxFileDirectory.Text = fdialog.FileName;
+            var film = new MojPlik()
+            {
+                CzasDodania = DateTime.Now,
+                NazwaPliku = fdialog.FileName,
+            };
         }
 
         private void Pause_Click(object sender, RoutedEventArgs e)
@@ -53,13 +59,33 @@ namespace projekt_dotNet
 
         private void DBButton_Click(object sender, RoutedEventArgs e)
         {
-            //Video vid = new Video()
-            //{
-            //    Id = 1,
-            //    FileName = TextBoxFileDirectory.Text,
-            //    AddedTime = DateTime.Now,
-            //    Lenght = "",
-            //};
+            var context = new VideoContext();
+            var x = TextBoxFileDirectory.Text;
+            var fName = x.Substring(x.LastIndexOf("\\")+1).ToString();
+
+            var vid = new Video()
+            {
+                FileName = fName,
+                AddedTime = DateTime.Now,
+            };
+
+            context.Videos.Add(vid);
+
+            context.SaveChanges();
+
+
+        }
+
+        private void SZUKAJ_Click(object sender, RoutedEventArgs e)
+        {
+            var context = new VideoContext();
+            foreach (var item in context.Videos)
+            {
+                if (item.FileName.Contains("test"))
+                {
+                    WyszukaneDane.AppendText("\n" + item.FileName);
+                }
+            }
         }
     }
 }
