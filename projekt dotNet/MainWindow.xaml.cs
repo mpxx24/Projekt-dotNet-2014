@@ -40,11 +40,6 @@ namespace projekt_dotNet
             fdialog.InitialDirectory = @"C:\Users\Mariusz\Desktop\dotNet";
             fdialog.ShowDialog();
             TextBoxFileDirectory.Text = fdialog.FileName;
-            var film = new MojPlik()
-            {
-                CzasDodania = DateTime.Now,
-                NazwaPliku = fdialog.FileName,
-            };
         }
 
         private void Pause_Click(object sender, RoutedEventArgs e)
@@ -61,12 +56,14 @@ namespace projekt_dotNet
         {
             var context = new VideoContext();
             var x = TextBoxFileDirectory.Text;
-            var fName = x.Substring(x.LastIndexOf("\\")+1).ToString();
+            var fileInfo = new FileInfo(x);
 
             var vid = new Video()
             {
-                FileName = fName,
+                FileName = fileInfo.Name,
                 AddedTime = DateTime.Now,
+                Extension = fileInfo.Extension,
+                Lenght = fileInfo.Length
             };
 
             context.Videos.Add(vid);
@@ -79,12 +76,78 @@ namespace projekt_dotNet
         private void SZUKAJ_Click(object sender, RoutedEventArgs e)
         {
             var context = new VideoContext();
-            foreach (var item in context.Videos)
+            WyszukaneDane.Document.Blocks.Clear();
+            if (RButtonFileName.IsChecked == true)
             {
-                if (item.FileName.Contains("test"))
+                foreach (var item in context.Videos)
                 {
-                    WyszukaneDane.AppendText("\n" + item.FileName);
+                    if (DoWyszukania.Text != null)
+                    {
+                        if (item.FileName.Contains(DoWyszukania.Text))
+                        {
+                            WyszukaneDane.AppendText("\n" + item.FileName);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("przed wyszukaniem, należy wpisać treść którą chce się wyszukać");
+                    }
                 }
+            }
+            else if (RButtonFileExt.IsChecked == true)
+            {
+                foreach (var item in context.Videos)
+                {
+                    if (DoWyszukania.Text != null)
+                    {
+                        if (item.Extension == DoWyszukania.Text)
+                        {
+                            WyszukaneDane.AppendText("\n" + item.FileName);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("przed wyszukaniem, należy wpisać treść którą chce się wyszukać");
+                    }
+                }
+            }
+            else if (RButtonFileLengthMoreThan.IsChecked == true)
+            {
+                foreach (var item in context.Videos)
+                {
+                    if (DoWyszukania.Text != null)
+                    {
+                        if (item.Lenght >= long.Parse(DoWyszukania.Text))
+                        {
+                            WyszukaneDane.AppendText("\n" + item.FileName);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("przed wyszukaniem, należy wpisać treść którą chce się wyszukać");
+                    }
+                }
+            }
+            else if (RButtonFileLengthLessThan.IsChecked == true)
+            {
+                foreach (var item in context.Videos)
+                {
+                    if (DoWyszukania.Text != null)
+                    {
+                        if (item.Lenght <= long.Parse(DoWyszukania.Text))
+                        {
+                            WyszukaneDane.AppendText("\n" + item.FileName);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("przed wyszukaniem, należy wpisać treść którą chce się wyszukać");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("musisz zaznaczyć konkretnego checkboxa!");
             }
         }
     }

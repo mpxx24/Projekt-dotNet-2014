@@ -60,7 +60,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MojPlik.cs" />
     <Compile Include="Video.cs" />
     <Compile Include="VideoContext.cs" />
     <Page Include="MainWindow.xaml">

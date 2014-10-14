@@ -9,15 +9,20 @@
         <Button x:Name="Browse" Content="Browse" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="413,239,0,0" Click="Browse_Click"/>
         <Button x:Name="Pause" Content="Pause" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="142,264,0,0" Click="Pause_Click"/>
         <Button x:Name="Stop" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="251,264,0,0" Click="Stop_Click"/>
-        <Button x:Name="DBButton" Content="Add to DB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="423,289,0,0" Click="DBButton_Click"/>
-        <RichTextBox x:Name="WyszukaneDane" HorizontalAlignment="Left" Height="212" VerticalAlignment="Top" Width="212" Margin="614,10,0,0" Block.TextAlignment="Center">
+        <Button x:Name="DBButton" Content="Add to DB" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="413,264,0,0" Click="DBButton_Click"/>
+        <RichTextBox x:Name="WyszukaneDane" HorizontalAlignment="Left" Height="212" VerticalAlignment="Top" Width="212" Margin="554,9,0,0" Block.TextAlignment="Center">
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button x:Name="SZUKAJ" Content="szukaj" HorizontalAlignment="Left" Margin="751,244,0,0" VerticalAlignment="Top" Width="75" Click="SZUKAJ_Click"/>
+        <Button x:Name="SZUKAJ" Content="szukaj" HorizontalAlignment="Left" Margin="691,236,0,0" VerticalAlignment="Top" Width="75" Click="SZUKAJ_Click" Height="23"/>
+        <TextBox x:Name="DoWyszukania" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" Margin="554,236,0,0"/>
+        <RadioButton x:Name="RButtonFileName" Content="File name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="788,79,0,0"/>
+        <RadioButton x:Name="RButtonFileExt" Content="File extension" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="788,112,0,0"/>
+        <RadioButton x:Name="RButtonFileLengthMoreThan" Content="File lenght (more than)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="788,145,0,0" />
+        <RadioButton x:Name="RButtonFileLengthLessThan" Content="File lenght (less than)" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="788,177,0,0" />
 
     </Grid>
 </Window>
