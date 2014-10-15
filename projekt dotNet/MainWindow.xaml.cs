@@ -60,6 +60,7 @@ namespace projekt_dotNet
 
         private void DBButton_Click(object sender, RoutedEventArgs e)
         {
+            
             var context = new VideoContext();
             var x = TextBoxFileDirectory.Text;
             var fileInfo = new FileInfo(x);
@@ -78,6 +79,12 @@ namespace projekt_dotNet
             context.SaveChanges();
 
 
+            //'odnów' listę autouzupełnianą na starcie
+            ListaPlikow.Items.Clear();
+            foreach (var item in context.Videos)
+            {
+                ListaPlikow.Items.Add(item.FilePath);
+            }
         }
 
         private void SZUKAJ_Click(object sender, RoutedEventArgs e)
