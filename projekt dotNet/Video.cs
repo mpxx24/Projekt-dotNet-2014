@@ -14,9 +14,9 @@ namespace projekt_dotNet
         [Key]
         public int Id { get; set; }
         public string FileName { get; set; }
+        public string FilePath { get; set; }
         public DateTime AddedTime { get; set; }
         public string Extension { get; set; }
         public long Lenght { get; set; }
-        //public FileStream VidFile { get; set; }
     }
 }

@@ -26,6 +26,12 @@ namespace projekt_dotNet
         {
             InitializeComponent();
             VideoWindow.Volume = 100;
+            var c = new VideoContext();
+            ListaPlikow.Items.Add("Lista plików w bazie danych: ");
+            foreach (var x in c.Videos)
+            {
+                ListaPlikow.Items.Add(x.FilePath);
+            }
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
@@ -63,7 +69,8 @@ namespace projekt_dotNet
                 FileName = fileInfo.Name,
                 AddedTime = DateTime.Now,
                 Extension = fileInfo.Extension,
-                Lenght = fileInfo.Length
+                Lenght = fileInfo.Length,
+                FilePath = x
             };
 
             context.Videos.Add(vid);
@@ -149,6 +156,13 @@ namespace projekt_dotNet
             {
                 MessageBox.Show("musisz zaznaczyć konkretnego checkboxa!");
             }
+        }
+
+        private void ListaPlikow_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cont = new VideoContext();
+            VideoWindow.Source = new Uri(ListaPlikow.SelectedItem.ToString());
+            VideoWindow.Play();
         }
     }
 }
